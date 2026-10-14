@@ -5,7 +5,6 @@ import Tilt from './Tilt'
 import Music, { playRoyalSoundtrack } from './Music'
 import { startMotion } from './motion'
 
-const WA_NUMBER = '919876543210' // Couple's WhatsApp Number for RSVP
 const VENUE_NAME = 'The Grand Ballroom, JW Marriott'
 const VENUE_CITY = 'Senapati Bapat Road, Pune, Maharashtra 411053'
 const MAP_LINK = 'https://www.google.com/maps/search/?api=1&query=JW+Marriott+Hotel+Pune+Senapati+Bapat+Road'
@@ -46,11 +45,11 @@ function Envelope() {
       </svg>
 
       <div id="c3">
-        <div className="om foil" aria-hidden="true">
-          &#2384;
+        <div className="card-cameo">
+          <img src="/images/couple.jpg" alt="Shambhavi & Aditya" className="cameo-img" />
         </div>
         <div className="card-shloka">॥ श्री गणेशाय नमः ॥</div>
-        <div className="s foil card-title">
+        <div className="royal-name foil card-title">
           Shambhavi
           <br />
           <span className="and-symbol">&amp;</span>
@@ -85,11 +84,12 @@ function Envelope() {
       <div className="eh">
         <div className="shloka-header">॥ ॐ श्री गणेशाय नमः ॥</div>
         <i>You are cordially invited to celebrate the royal wedding of</i>
-        <h1 className="s gold main-title">Shambhavi &amp; Aditya</h1>
+        <h1 className="royal-name gold main-title">Shambhavi &amp; Aditya</h1>
         <p className="tap-hint">
           <span className="pulse-dot"></span> Tap the wax seal to open <span className="pulse-dot"></span>
         </p>
       </div>
+
     </section>
   )
 }
@@ -382,6 +382,15 @@ function LoveStory() {
             </div>
           </div>
         ))}
+      <div className="couple-moment-feature glass">
+        <div className="moment-img-frame">
+          <img src="/images/couple.jpg" alt="Shambhavi & Aditya together" className="moment-img" />
+          <div className="moment-overlay-badge">A PROMISE OF FOREVER</div>
+        </div>
+        <p className="moment-quote">
+          &ldquo;Two souls, one sacred journey. Blessed by our families, united forever in love.&rdquo;
+        </p>
+        <div className="moment-names royal-name gold">Shambhavi &amp; Aditya</div>
       </div>
     </section>
   )
@@ -530,103 +539,6 @@ function GuestWishes() {
   )
 }
 
-function Rsvp() {
-  const submit = e => {
-    e.preventDefault()
-    const f = new FormData(e.target)
-    const name = f.get('nm')
-    const attending = f.get('at')
-    const guests = f.get('gs')
-    const events = f.getAll('ev').join(', ') || 'All Events'
-    const diet = f.get('diet')
-    const note = f.get('mg') || '-'
-
-    const text =
-      `🌸 *RSVP - Shambhavi & Aditya Wedding* 🌸\n\n` +
-      `👤 *Name:* ${name}\n` +
-      `✨ *Response:* ${attending}\n` +
-      `👥 *Number of Guests:* ${guests}\n` +
-      `🎉 *Events Attending:* ${events}\n` +
-      `🍽️ *Food Preference:* ${diet}\n` +
-      `💌 *Blessing Note:* ${note}\n\n` +
-      `_Sent from the Royal Wedding Invitation Portal_`
-
-    window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(text)}`, '_blank')
-    window.dispatchEvent(new Event('burst'))
-  }
-
-  return (
-    <div className="glass rsvp-card">
-      <div className="shloka-mini">॥ अतिथि देवो भवः ॥</div>
-      <h2 className="s foil">Will You Grace Our Day?</h2>
-      <p style={{ marginTop: '-4px', opacity: 0.85 }}>
-        Please confirm your attendance by <strong>30 November 2026</strong> so we can arrange your royal stay and hospitality.
-      </p>
-      <Orn />
-
-      <form onSubmit={submit}>
-        <div>
-          <label htmlFor="nm">Full Name</label>
-          <input id="nm" name="nm" required placeholder="Guest or Family Name" autoComplete="name" />
-        </div>
-
-        <div className="form-row">
-          <div>
-            <label htmlFor="at">Will you join us?</label>
-            <select id="at" name="at">
-              <option>Joyfully Accept with Love</option>
-              <option>Regretfully Decline from Afar</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor="gs">Number of Guests</label>
-            <input id="gs" name="gs" type="number" min="1" max="10" defaultValue="2" />
-          </div>
-        </div>
-
-        <div>
-          <label>Events you'll be attending</label>
-          <div className="ch">
-            <label>
-              <input type="checkbox" name="ev" value="Mehendi & Sangeet" defaultChecked />
-              Mehendi &amp; Sangeet
-            </label>
-            <label>
-              <input type="checkbox" name="ev" value="Haldi Ceremony" defaultChecked />
-              Haldi
-            </label>
-            <label>
-              <input type="checkbox" name="ev" value="Wedding Ceremony" defaultChecked />
-              Wedding &amp; Varmala
-            </label>
-            <label>
-              <input type="checkbox" name="ev" value="Grand Reception" defaultChecked />
-              Reception
-            </label>
-          </div>
-        </div>
-
-        <div>
-          <label htmlFor="diet">Dietary Preference</label>
-          <select id="diet" name="diet">
-            <option>Pure Vegetarian Cuisine</option>
-            <option>Jain Cuisine (No Onion/Garlic)</option>
-            <option>Multi-Cuisine / Chef Specials</option>
-          </select>
-        </div>
-
-        <div>
-          <label htmlFor="mg">Personal Note or Song Request</label>
-          <textarea id="mg" name="mg" rows="3" placeholder="Tell us your favorite dance song or a message for the couple" />
-        </div>
-
-        <button className="b p rsvp-submit" type="submit">
-          🌸 Send RSVP via WhatsApp
-        </button>
-      </form>
-    </div>
-  )
-}
 
 function VenueGuide() {
   return (
@@ -710,16 +622,28 @@ export default function App() {
 
               <div className="couple-showcase">
                 <div className="person-block">
+                  <div className="portrait-arch">
+                    <img src="/images/shambhavi.jpg" alt="Shambhavi - The Bride" className="person-img" />
+                    <div className="portrait-filigree"></div>
+                  </div>
                   <div className="person-role">THE BRIDE</div>
-                  <div className="names s foil">Shambhavi</div>
+                  <div className="names royal-name foil">Shambhavi</div>
                   <small className="family-line">Daughter of Smt. Sunita &amp; Shri Rajesh Sharma</small>
                 </div>
 
-                <div className="s gold couple-amp">&amp;</div>
+                <div className="couple-center-divider">
+                  <svg className="sacred-kalash" viewBox="0 0 50 60" width="36" height="44"><use href="#kalash" /></svg>
+                  <div className="royal-name gold couple-amp">&amp;</div>
+                  <svg className="sacred-diya" viewBox="0 0 40 35" width="32" height="28"><use href="#diya" /></svg>
+                </div>
 
                 <div className="person-block">
+                  <div className="portrait-arch">
+                    <img src="/images/aditya.jpg" alt="Aditya - The Groom" className="person-img" />
+                    <div className="portrait-filigree"></div>
+                  </div>
                   <div className="person-role">THE GROOM</div>
-                  <div className="names s foil">Aditya</div>
+                  <div className="names royal-name foil">Aditya</div>
                   <small className="family-line">Son of Smt. Meenakshi &amp; Shri Sanjay Singhania</small>
                 </div>
               </div>
@@ -727,6 +651,7 @@ export default function App() {
               <div className="arch-wrap">
                 <div className="arch" dangerouslySetInnerHTML={{ __html: ARCH }} />
               </div>
+
             </div>
           </Tilt>
         </section>
@@ -812,15 +737,12 @@ export default function App() {
         {/* Wishes & Blessings Wall */}
         <GuestWishes />
 
-        {/* RSVP Form */}
-        <section className="sec">
-          <Rsvp />
-        </section>
+
       </main>
 
       <footer>
         <div className="shloka-mini">॥ शुभ विवाह ॥</div>
-        <div className="names s gold footer-names">
+        <div className="names royal-name gold footer-names">
           Shambhavi
           <br />
           <span style={{ fontSize: '2.5rem' }}>&amp;</span>

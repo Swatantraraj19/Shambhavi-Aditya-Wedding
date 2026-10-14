@@ -4,10 +4,16 @@ import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment
 import { tilt } from './motion'
 
 const L = (w, o) => [...w].map((c, i) => (
-  <span key={i} className="l s gold" aria-hidden="true" style={{ '--i': i + o }}>
+  <span
+    key={i}
+    className={`l royal-name gold ${i === 0 ? 'capital-initial' : ''}`}
+    aria-hidden="true"
+    style={{ '--i': i + o }}
+  >
     {c === ' ' ? '\u00a0' : c}
   </span>
 ))
+
 
 export default function Hero() {
   const box = useRef()
