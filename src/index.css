@@ -477,22 +477,47 @@ body::before {
 
 .hero-names {
   position: relative;
-  font-size: clamp(3.2rem, 16vw, 6.2rem);
-  line-height: 1;
-  margin: 0.1em 0;
+  margin: 0.12em 0 0.18em;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  gap: 0.2em;
+  justify-content: center;
+  gap: 0.04em;
+  text-align: center;
+}
+
+.hero-name-line {
+  display: inline-flex;
+  justify-content: center;
+  align-items: baseline;
+  white-space: nowrap;
+  font-size: clamp(2.5rem, 11.5vw, 4.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+}
+
+.hero-line-second {
+  display: inline-flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.18em;
+}
+
+.royal-letter {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  display: inline-block;
+  line-height: 1;
 }
 
 .hero-names .ampersand {
-  font-family: var(--font-serif);
-  font-size: clamp(2.4rem, 10vw, 4rem);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.72em;
   color: #d4af37;
-  font-weight: 300;
-  margin: 0 0.15em;
+  font-weight: 400;
+  font-style: italic;
+  margin-right: 0.05em;
 }
 
 .hero .dt2 {

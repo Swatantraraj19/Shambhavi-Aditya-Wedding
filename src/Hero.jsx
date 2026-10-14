@@ -6,7 +6,7 @@ import { tilt } from './motion'
 const L = (w, o) => [...w].map((c, i) => (
   <span
     key={i}
-    className={`l royal-name gold ${i === 0 ? 'capital-initial' : ''}`}
+    className="l royal-letter gold"
     aria-hidden="true"
     style={{ '--i': i + o }}
   >
@@ -165,8 +165,9 @@ export default function Hero() {
       r.setSize(w, h)
       cam.aspect = w / h
       const p = w / h < 1
-      by = p ? 1.6 : 0.25
-      bs = p ? 0.95 : 1.2
+      by = p ? 1.88 : 0.25
+      bs = p ? 0.72 : 1.15
+      cam.position.z = p ? 8.8 : 8.2
       cam.updateProjectionMatrix()
     }
     size()
@@ -256,9 +257,11 @@ export default function Hero() {
         <div className="shloka-mini">॥ ॐ श्री गणेशाय नमः ॥</div>
         <p className="hero-subtitle">Together with their families</p>
         <h1 aria-label="Shambhavi and Aditya" className="hero-names">
-          {L('Shambhavi', 0)}
-          <span className="ampersand">&amp;</span>
-          {L('Aditya', 10)}
+          <span className="hero-name-line">{L('Shambhavi', 0)}</span>
+          <span className="hero-name-line hero-line-second">
+            <span className="ampersand">&amp;</span>
+            {L('Aditya', 10)}
+          </span>
         </h1>
         <div className="dt2">
           <span>12</span> &bull; <span>12</span> &bull; <span>2026</span>
