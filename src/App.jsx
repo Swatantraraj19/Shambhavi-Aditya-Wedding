@@ -382,6 +382,8 @@ function LoveStory() {
             </div>
           </div>
         ))}
+      </div>
+
       <div className="couple-moment-feature glass">
         <div className="moment-img-frame">
           <img src="/images/couple.jpg" alt="Shambhavi & Aditya together" className="moment-img" />
