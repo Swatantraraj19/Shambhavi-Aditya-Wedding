@@ -200,21 +200,20 @@ export default function Hero() {
       const isPortrait = w / h < 1
 
       if (isPortrait) {
-        // Mobile portrait: rings float comfortably in upper 40%
-        by = 1.38
-        bs = Math.min(w / 400, 1) * 0.60
-        cam.position.z = 8.6
+        // Mobile portrait: rings are refined & delicate (never overpowering), leaving majestic room for couple's names
+        by = 1.42
+        bs = Math.min(w / 400, 1) * 0.38
+        cam.position.z = 8.2
       } else if (h < 640) {
         // Short landscape / mobile landscape
         by = 1.05
-        bs = 0.54
-        cam.position.z = 8.0
+        bs = 0.42
+        cam.position.z = 7.8
       } else {
-        // Desktop / Tablet landscape:
-        // Positioned in top half so it floats above the text cleanly
-        by = 1.18
-        bs = Math.min(h / 860, 1) * 0.74
-        cam.position.z = 8.2
+        // Desktop / Tablet landscape: elegant jewel scale floating in top half
+        by = 1.15
+        bs = Math.min(h / 900, 1) * 0.52
+        cam.position.z = 8.0
       }
       cam.updateProjectionMatrix()
     }

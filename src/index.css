@@ -383,6 +383,72 @@ body::before {
   }
 }
 
+@media (max-width: 600px) {
+  #flap {
+    height: 46%;
+  }
+
+  #seal {
+    top: 46%;
+    width: 90px;
+    height: 90px;
+    margin: -45px 0 0 -45px;
+    font-size: 1.85rem;
+  }
+
+  .eh {
+    top: calc(46% + 54px);
+    bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .shloka-header {
+    font-size: 1rem;
+    margin-bottom: 2px;
+  }
+
+  .eh i {
+    font-size: 0.98rem;
+    line-height: 1.35;
+    max-width: 320px;
+  }
+
+  .eh .main-title {
+    font-size: clamp(2.2rem, 9.5vw, 3rem);
+    margin: 0.08em 0;
+  }
+
+  .tap-hint {
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    margin-top: 6px;
+  }
+
+  #c3 {
+    width: min(84vw, 320px);
+    max-height: 74svh;
+    padding: 22px 14px;
+    border-radius: 150px 150px 16px 16px;
+  }
+
+  .card-cameo {
+    width: 66px;
+    height: 66px;
+  }
+
+  .card-title {
+    font-size: clamp(2rem, 9vw, 2.7rem);
+  }
+
+  .card-date {
+    font-size: 1.15rem;
+  }
+}
+
 /* Floating Royal Audio Pill Button */
 .royal-music-pill {
   position: fixed;
@@ -536,7 +602,7 @@ body::before {
   justify-content: center;
   align-items: baseline;
   white-space: nowrap;
-  font-size: clamp(2.1rem, 7.5vw, 3.8rem);
+  font-size: clamp(2.8rem, 6vw, 4.4rem);
   line-height: 1.05;
   letter-spacing: -0.01em;
 }
@@ -597,29 +663,39 @@ body::before {
 
 @media (max-width: 600px) {
   .hero {
-    padding: 0 16px 3svh;
+    padding: 0 16px calc(46px + env(safe-area-inset-bottom, 0px));
+  }
+  .hero::after {
+    height: 38px;
+  }
+  .hero-content {
+    margin-bottom: 6px;
   }
   .hero-name-line {
-    font-size: clamp(1.9rem, 8.5vw, 2.7rem);
+    font-size: clamp(2.7rem, 11.5vw, 3.4rem);
+    line-height: 1.05;
   }
   .shloka-mini {
-    font-size: 0.98rem;
+    font-size: 1.05rem;
     margin-bottom: 2px;
   }
   .hero-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.12rem;
     margin: 0.12em 0;
   }
   .hero .dt2 {
-    font-size: 1.3rem;
-    margin: 8px 0 3px;
+    font-size: 1.35rem;
+    letter-spacing: 0.18em;
+    margin: 8px 0 2px;
   }
   .hero-place {
-    font-size: 0.78rem;
-    margin: 0.15em 0 8px;
+    font-size: 0.8rem;
+    letter-spacing: 0.15em;
+    margin: 0.12em 0 6px;
   }
   .hero-drag-hint {
-    font-size: 0.68rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
     margin-top: 4px;
   }
 }
@@ -851,6 +927,47 @@ h2 {
 .moment-names {
   font-size: 2.4rem;
   line-height: 1.1;
+}
+
+@media (max-width: 600px) {
+  .sec {
+    padding: 38px 16px;
+  }
+
+  h2 {
+    font-size: clamp(1.95rem, 8vw, 2.5rem);
+  }
+
+  .glass {
+    padding: 26px 16px;
+    border-radius: 24px;
+  }
+
+  .couple-moment-feature {
+    margin: 20px auto 10px;
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  .moment-img-frame {
+    border-radius: 16px;
+  }
+
+  .moment-overlay-badge {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    padding: 4px 12px;
+  }
+
+  .moment-quote {
+    font-size: 1.05rem;
+    line-height: 1.45;
+    margin: 14px 6px 6px;
+  }
+
+  .moment-names {
+    font-size: clamp(1.9rem, 7.8vw, 2.3rem);
+  }
 }
 
 .arch-wrap {
@@ -1156,17 +1273,83 @@ h2 {
   font-weight: 700;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
+  .rv {
+    margin: 18px auto;
+    padding: 26px 10px 20px;
+    border-radius: 20px;
+  }
+
+  .reveal-badge {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+  }
+
+  .dt {
+    gap: 6px;
+    align-items: baseline;
+  }
+
+  .date-num {
+    font-size: clamp(2.3rem, 8.5vw, 3.1rem);
+  }
+
+  .date-month {
+    font-size: clamp(2.2rem, 8vw, 2.85rem);
+  }
+
+  .date-year {
+    font-size: clamp(1.55rem, 5.8vw, 1.95rem);
+  }
+
+  .date-sub {
+    font-size: clamp(0.9rem, 3.5vw, 1.05rem);
+    margin-top: 8px;
+  }
+
+  .journey-quote {
+    font-size: clamp(1.3rem, 5vw, 1.6rem);
+    margin-top: 20px;
+  }
+
   .cd {
     gap: 8px;
+    margin-top: 16px;
   }
+
   .cd-box {
-    min-width: 62px;
-    padding: 10px 4px;
+    min-width: 58px;
+    padding: 9px 4px;
     border-radius: 14px;
   }
+
   .cd-val {
-    font-size: 1.55rem;
+    font-size: 1.5rem;
+  }
+
+  .cd-lbl {
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+  }
+}
+
+@media (max-width: 380px) {
+  .cd {
+    gap: 5px;
+  }
+
+  .cd-box {
+    min-width: 50px;
+    padding: 8px 3px;
+    border-radius: 12px;
+  }
+
+  .cd-val {
+    font-size: 1.32rem;
+  }
+
+  .cd-lbl {
+    font-size: 0.56rem;
   }
 }
 
@@ -1262,6 +1445,52 @@ h2 {
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
+}
+
+@media (max-width: 600px) {
+  .ev {
+    border-radius: 170px 170px 22px 22px;
+    margin: 24px auto;
+    min-height: 420px;
+  }
+
+  .ev-content {
+    padding: 30px 14px 22px;
+  }
+
+  .ev-badge {
+    font-size: 0.65rem;
+    letter-spacing: 0.16em;
+    padding: 3px 10px;
+    margin-bottom: 6px;
+  }
+
+  .ev-title {
+    font-size: clamp(1.85rem, 6.8vw, 2.35rem);
+    line-height: 1.15;
+  }
+
+  .ev-time {
+    font-size: 0.88rem;
+    margin: 6px 0 2px;
+  }
+
+  .ev-date {
+    font-size: 1.18rem;
+    margin-bottom: 3px;
+  }
+
+  .ev-venue {
+    font-size: 0.92rem;
+    margin: 0 0 10px;
+  }
+
+  .ev-attire {
+    font-size: 0.82rem;
+    padding: 5px 12px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+  }
 }
 
 /* Buttons */
@@ -1490,44 +1719,41 @@ input:focus, select:focus, textarea:focus {
   margin-bottom: 26px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
   .venue-grid {
     grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
   }
-}
 
-.venue-item {
-  background: rgba(212, 175, 55, 0.08);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  border-radius: 16px;
-  padding: 14px 16px;
-}
+  .venue-title {
+    font-size: 1.35rem;
+  }
 
-.v-icon {
-  font-size: 1.4rem;
-  display: block;
-  margin-bottom: 4px;
-}
+  .venue-address {
+    font-size: 0.98rem;
+    margin: 0 0 16px;
+  }
 
-.venue-item b {
-  display: block;
-  font-family: var(--font-royal);
-  font-size: 0.95rem;
-  color: #8a2438;
-  margin-bottom: 2px;
-}
+  .venue-item {
+    padding: 12px 14px;
+    border-radius: 14px;
+  }
 
-:root[data-theme="dark"] .venue-item b {
-  color: #f6d9b6;
-}
+  .venue-item b {
+    font-size: 0.92rem;
+  }
 
-.venue-item span {
-  font-size: 0.88rem;
-  opacity: 0.85;
-}
+  .venue-item span {
+    font-size: 0.82rem;
+  }
 
-.venue-btn-wrap {
-  margin-top: 10px;
+  .venue-btn-wrap .b {
+    width: 100%;
+    max-width: 290px;
+    padding: 12px 20px;
+    font-size: 0.98rem;
+  }
 }
 
 /* Footer */
@@ -1538,30 +1764,33 @@ footer {
   position: relative;
 }
 
-.footer-names {
-  font-size: clamp(3.2rem, 14vw, 4.6rem);
-  line-height: 1.05;
-}
+@media (max-width: 600px) {
+  footer {
+    padding: 56px 16px calc(65px + env(safe-area-inset-bottom, 0px));
+  }
 
-.footer-date {
-  font-family: var(--font-royal);
-  font-size: 1.25rem;
-  letter-spacing: 0.16em;
-  color: #fbe9bb;
-  margin: 12px 0 6px;
-}
+  .footer-names {
+    font-size: clamp(2.5rem, 11vw, 3.4rem);
+    line-height: 1.08;
+  }
 
-.footer-tagline {
-  font-style: italic;
-  font-size: 1.15rem;
-  opacity: 0.9;
-  margin: 0 0 24px;
-}
+  .footer-date {
+    font-size: 1.1rem;
+    letter-spacing: 0.12em;
+    margin: 10px 0 4px;
+  }
 
-.share-btn {
-  margin-top: 10px;
-  font-size: 1.05rem;
-  padding: 14px 32px;
+  .footer-tagline {
+    font-size: 1rem;
+    margin: 0 0 20px;
+  }
+
+  .share-btn {
+    width: 100%;
+    max-width: 320px;
+    font-size: 0.96rem;
+    padding: 13px 22px;
+  }
 }
 
 /* Tilt motion helper */

@@ -408,7 +408,6 @@ export default function App() {
           <div className="couple-moment-feature glass">
             <div className="moment-img-frame">
               <img src="/images/sam-ad-1.jpg" alt="Shambhavi & Aditya together" className="moment-img" />
-              <div className="moment-overlay-badge">A PROMISE OF FOREVER</div>
             </div>
             <p className="moment-quote">
               &ldquo;Two souls, one sacred journey. Blessed by our families, united forever in love.&rdquo;
