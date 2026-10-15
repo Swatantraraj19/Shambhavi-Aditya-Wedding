@@ -327,7 +327,7 @@ function Countdown() {
   )
 }
 
-function CeremonyCard({ svg, title, time, dateStr, dateIcs, startIcs, endIcs, file, attire, desc }) {
+function CeremonyCard({ svg, title, time, dateStr, dateIcs, startIcs, endIcs, file, desc }) {
   return (
     <Tilt max={8}>
       <div className="ev">
@@ -340,9 +340,6 @@ function CeremonyCard({ svg, title, time, dateStr, dateIcs, startIcs, endIcs, fi
           </div>
           <div className="ev-date">{dateStr}</div>
           <p className="ev-venue">Mango Leaf Lake Resort &bull; Khadakwasla, Pune</p>
-          <div className="ev-attire">
-            <span className="attire-tag">Dress Code:</span> {attire}
-          </div>
           <div className="ev-actions">
             <a className="b b-map" href={MAP_LINK} target="_blank" rel="noopener noreferrer">
               📍 View Location
@@ -444,7 +441,6 @@ export default function App() {
             startIcs="1600"
             endIcs="2330"
             file="celebrations_day1.ics"
-            attire="Festive Traditional & Ethnic Elegance"
             desc="An auspicious and joyous gathering of Engagement & Tilak, Haldi blessings, and vibrant Sangeet celebrations."
           />
 
@@ -457,7 +453,6 @@ export default function App() {
             startIcs="1100"
             endIcs="1600"
             file="wedding_day2.ics"
-            attire="Royal Indian Heritage & Traditional Attire"
             desc="The sacred rituals of Mangalashtak, Grit Dhari, Saat Phere, and the holy Vivah Sanskar."
           />
         </section>
