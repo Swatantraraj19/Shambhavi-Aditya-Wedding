@@ -51,6 +51,11 @@ export default function Hero() {
     const amb = new THREE.AmbientLight(0xffeedd, 0.8)
     sc.add(amb)
 
+    // Extra brilliant light for diamond sparkle
+    const diamondLight = new THREE.PointLight(0xffffff, 2.5, 12)
+    diamondLight.position.set(0, 4, 3)
+    sc.add(diamondLight)
+
     // Master group for rings & diamond
     const g = new THREE.Group()
     sc.add(g)
@@ -69,40 +74,68 @@ export default function Hero() {
       envMapIntensity: 2.6,
     })
 
-    // Solitaire Diamond Material with intense specular refraction
-    const diamondMat = new THREE.MeshStandardMaterial({
+    // Solitaire Diamond Crown Setting
+    const crownGroup = new THREE.Group()
+
+    // Faceted brilliant-cut diamond gem
+    const gemGeo = new THREE.OctahedronGeometry(0.32, 0)
+    gemGeo.scale(1, 1.2, 1)
+
+    const diamondMat = new THREE.MeshPhysicalMaterial({
       color: 0xffffff,
-      metalness: 0.05,
+      emissive: 0x081520,
+      metalness: 0.02,
       roughness: 0.02,
-      envMapIntensity: 4.5,
+      transmission: 0.92,
+      ior: 2.417,
+      reflectivity: 0.98,
+      clearcoat: 1.0,
+      clearcoatRoughness: 0.0,
+      flatShading: true,
+      envMapIntensity: 5.0,
     })
+
+    const gem = new THREE.Mesh(gemGeo, diamondMat)
+    gem.position.set(0, 0.16, 0)
+    crownGroup.add(gem)
+
+    // Platinum / White Gold setting
+    const prongMat = new THREE.MeshStandardMaterial({
+      color: 0xf0f4f8,
+      metalness: 0.96,
+      roughness: 0.08,
+      envMapIntensity: 3.0,
+    })
+
+    // 6 Platinum Prongs
+    for (let i = 0; i < 6; i++) {
+      const angle = (i / 6) * Math.PI * 2
+      const prong = new THREE.Mesh(new THREE.CylinderGeometry(0.022, 0.022, 0.28, 8), prongMat)
+      prong.position.set(Math.cos(angle) * 0.22, 0.1, Math.sin(angle) * 0.22)
+      prong.rotation.z = Math.cos(angle) * -0.16
+      prong.rotation.x = Math.sin(angle) * 0.16
+      crownGroup.add(prong)
+    }
+
+    // Bezel base ring
+    const bezel = new THREE.Mesh(new THREE.TorusGeometry(0.24, 0.03, 16, 32), prongMat)
+    bezel.rotation.x = Math.PI / 2
+    bezel.position.y = 0.02
+    crownGroup.add(bezel)
 
     // Ring 1: Groom's Yellow Gold band
     const ring1 = new THREE.Mesh(new THREE.TorusGeometry(1.22, 0.18, 56, 160), yellowGold)
-    ring1.position.x = -0.66
-    ring1.rotation.y = 0.58
+    ring1.position.set(-0.55, 0, 0)
+    ring1.rotation.set(0.25, 0.52, 0.15)
     g.add(ring1)
 
-    // Ring 2: Bride's Rose Gold interlocking band
+    // Ring 2: Bride's Rose Gold interlocking solitaire ring
     const ring2 = new THREE.Mesh(new THREE.TorusGeometry(1.22, 0.18, 56, 160), roseGold)
-    ring2.position.x = 0.66
-    ring2.rotation.y = -0.58
+    ring2.position.set(0.55, 0, 0)
+    ring2.rotation.set(-0.25, -0.52, -0.15)
+    crownGroup.position.set(0, 1.22, 0)
+    ring2.add(crownGroup)
     g.add(ring2)
-
-    // Multi-faceted Diamond (Icosahedron faceted gem)
-    const gem = new THREE.Mesh(new THREE.IcosahedronGeometry(0.34, 1), diamondMat)
-    gem.position.set(0, 1.34, 0)
-    g.add(gem)
-
-    // Diamond Prongs / Crown setting
-    const prongMat = new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 0.9, roughness: 0.15 })
-    for (let i = 0; i < 6; i++) {
-      const angle = (i / 6) * Math.PI * 2
-      const prong = new THREE.Mesh(new THREE.CylinderGeometry(0.028, 0.028, 0.28, 8), prongMat)
-      prong.position.set(Math.cos(angle) * 0.26, 1.28, Math.sin(angle) * 0.26)
-      prong.rotation.z = Math.cos(angle) * -0.2
-      g.add(prong)
-    }
 
     // Floating Golden Dust / Sacred Sparks
     const N = 500
@@ -156,7 +189,7 @@ export default function Hero() {
     window.addEventListener('pointermove', onPointerMove)
     window.addEventListener('pointerup', onPointerUp)
 
-    // Dynamic Sizing
+    // Dynamic Sizing calibrated for Mobile & Desktop so rings NEVER overlap text
     let by = 0
     let bs = 1
     const size = () => {
@@ -164,10 +197,25 @@ export default function Hero() {
       const h = el.clientHeight
       r.setSize(w, h)
       cam.aspect = w / h
-      const p = w / h < 1
-      by = p ? 1.88 : 0.25
-      bs = p ? 0.72 : 1.15
-      cam.position.z = p ? 8.8 : 8.2
+      const isPortrait = w / h < 1
+
+      if (isPortrait) {
+        // Mobile portrait: rings float comfortably in upper 40%
+        by = 1.38
+        bs = Math.min(w / 400, 1) * 0.60
+        cam.position.z = 8.6
+      } else if (h < 640) {
+        // Short landscape / mobile landscape
+        by = 1.05
+        bs = 0.54
+        cam.position.z = 8.0
+      } else {
+        // Desktop / Tablet landscape:
+        // Positioned in top half so it floats above the text cleanly
+        by = 1.18
+        bs = Math.min(h / 860, 1) * 0.74
+        cam.position.z = 8.2
+      }
       cam.updateProjectionMatrix()
     }
     size()
@@ -204,16 +252,10 @@ export default function Hero() {
       }
 
       // Smooth Gyroscope + Auto-float + User Drag interpolation
-      const targetY = targetRotation.y + tilt.x * 0.75 + Math.sin(t * 0.45) * 0.4
-      const targetX = targetRotation.x + tilt.y * 0.4 + Math.cos(t * 0.35) * 0.15
+      const targetY = targetRotation.y + tilt.x * 0.65 + t * 0.35
+      const targetX = targetRotation.x + tilt.y * 0.35 + Math.sin(t * 0.5) * 0.12
       g.rotation.y += (targetY - g.rotation.y) * 0.05
       g.rotation.x += (targetX - g.rotation.x) * 0.05
-
-      // Independent ring & gem rotations
-      ring1.rotation.x = t * 0.45
-      ring2.rotation.x = -t * 0.45
-      gem.rotation.y = t * 1.2
-      gem.rotation.x = Math.sin(t) * 0.2
 
       // Dynamic light orbiting
       light1.position.x = Math.cos(t * 0.7) * 5
@@ -266,7 +308,7 @@ export default function Hero() {
         <div className="dt2">
           <span>12</span> &bull; <span>12</span> &bull; <span>2026</span>
         </div>
-        <p className="hero-place">The Grand Ballroom &bull; Pune, Maharashtra</p>
+        <p className="hero-place">Mango Leaf Lake Resort &bull; Khadakwasla, Pune</p>
         <div className="hero-drag-hint">
           <span className="hint-icon">✦</span> Interactive 3D &bull; Tilt or Drag Rings <span className="hint-icon">✦</span>
         </div>

@@ -1,13 +1,12 @@
 import { useEffect, useRef, useState } from 'react'
-import { DEFS, ARCH, SANGEET, HALDI, WEDDING, RECEPTION } from './scenes'
+import { DEFS, SANGEET, HALDI, WEDDING, RECEPTION } from './scenes'
 import Hero from './Hero'
 import Tilt from './Tilt'
-import Music, { playRoyalSoundtrack } from './Music'
 import { startMotion } from './motion'
 
-const VENUE_NAME = 'The Grand Ballroom, JW Marriott'
-const VENUE_CITY = 'Senapati Bapat Road, Pune, Maharashtra 411053'
-const MAP_LINK = 'https://www.google.com/maps/search/?api=1&query=JW+Marriott+Hotel+Pune+Senapati+Bapat+Road'
+const VENUE_NAME = 'Mango Leaf Lake Resort'
+const VENUE_CITY = 'NDA Road, near Malai Mata Temple, Khadakwadi, Khadakwasla, Pune, Maharashtra 411023'
+const MAP_LINK = 'https://www.google.com/maps/search/?api=1&query=Mango+Leaf+Lake+Resort+NDA+Road+near+Malai+Mata+Temple+Khadakwadi+Khadakwasla+Pune+411023'
 
 const makeIcs = (title, date, startTime, endTime, desc) =>
   'data:text/calendar;charset=utf8,' +
@@ -27,13 +26,12 @@ function Envelope() {
 
   const handleOpen = () => {
     startMotion()
-    playRoyalSoundtrack()
     setOpen(true)
     setTimeout(() => {
       document.body.classList.add('go')
       window.dispatchEvent(new Event('burst'))
-    }, 2400)
-    setTimeout(() => setGone(true), 4200)
+    }, 3200)
+    setTimeout(() => setGone(true), 4800)
   }
 
   if (gone) return null
@@ -46,7 +44,7 @@ function Envelope() {
 
       <div id="c3">
         <div className="card-cameo">
-          <img src="/images/couple.jpg" alt="Shambhavi & Aditya" className="cameo-img" />
+          <img src="/images/sam-ad-1.jpg" alt="Shambhavi & Aditya" className="cameo-img" />
         </div>
         <div className="card-shloka">॥ श्री गणेशाय नमः ॥</div>
         <div className="royal-name foil card-title">
@@ -58,7 +56,7 @@ function Envelope() {
         </div>
         <div className="card-divider" />
         <small className="card-date">12 &bull; 12 &bull; 2026</small>
-        <span className="card-venue">PUNE &bull; MAHARASHTRA</span>
+        <span className="card-venue">KHADAKWASLA &bull; PUNE</span>
       </div>
 
       <div id="flap">
@@ -83,7 +81,7 @@ function Envelope() {
 
       <div className="eh">
         <div className="shloka-header">॥ ॐ श्री गणेशाय नमः ॥</div>
-        <i>You are cordially invited to celebrate the royal wedding of</i>
+        <i>You are warmly invited to celebrate the royal wedding of</i>
         <h1 className="royal-name gold main-title">Shambhavi &amp; Aditya</h1>
         <p className="tap-hint">
           <span className="pulse-dot"></span> Tap the wax seal to open <span className="pulse-dot"></span>
@@ -280,12 +278,12 @@ function Reveal() {
     <div className="rv" ref={box}>
       <div className="reveal-badge">Auspicious Wedding Muhurat</div>
       <div className="dt">
-        <b className="foil date-num">12</b>
-        <b className="foil date-month">December</b>
-        <b className="foil date-year">2026</b>
+        <b className="gold date-num">12</b>
+        <b className="gold date-month">December</b>
+        <b className="gold date-year">2026</b>
       </div>
       <small className="date-sub">
-        Saturday &bull; Godhuli Bela (6:30 PM) &bull; Pune, Maharashtra
+        Saturday &bull; 11:00 AM &bull; Pune, Maharashtra
       </small>
       {!gone && (
         <>
@@ -298,7 +296,7 @@ function Reveal() {
 }
 
 function Countdown() {
-  const calculateTime = () => new Date('2026-12-12T18:30:00+05:30') - new Date()
+  const calculateTime = () => new Date('2026-12-12T11:00:00+05:30') - new Date()
   const [timeLeft, setTimeLeft] = useState(calculateTime)
 
   useEffect(() => {
@@ -329,75 +327,6 @@ function Countdown() {
   )
 }
 
-function LoveStory() {
-  const milestones = [
-    {
-      year: 'Autumn 2022',
-      tag: 'The First Spark',
-      title: 'Coffee & Endless Conversations',
-      desc: 'In the charming cafes of Pune, two worlds collided. What was meant to be a polite hour turned into four hours of non-stop laughter and discovering soulmates in each other.',
-      icon: '☕',
-    },
-    {
-      year: 'Winter 2024',
-      tag: 'Growing in Love',
-      title: 'Adventures & Quiet Moments',
-      desc: 'From trekking the Sahyadri hills to celebrating Diwali together, every memory made it clear that life was infinitely brighter hand-in-hand.',
-      icon: '✨',
-    },
-    {
-      year: 'Spring 2025',
-      tag: 'The Proposal',
-      title: 'Under a Sky Full of Stars',
-      desc: 'On a starlit terrace overlooking the valley, Aditya knelt down with trembling hands and a heartfelt promise. With tears of joy, Shambhavi said YES!',
-      icon: '💍',
-    },
-    {
-      year: '12 December 2026',
-      tag: 'Forever Begins',
-      title: 'Two Families, One Heart',
-      desc: 'Surrounded by the warmth of our beloved parents, elders, and dear friends, we step into our forever with love, laughter, and lifelong devotion.',
-      icon: '🌺',
-    },
-  ]
-
-  return (
-    <section className="sec story-sec">
-      <small className="section-eyebrow">OUR JOURNEY</small>
-      <h2 className="s foil">How Love Unfolded</h2>
-      <Orn />
-      <div className="timeline">
-        {milestones.map((m, idx) => (
-          <div key={idx} className="timeline-item">
-            <div className="timeline-marker">
-              <span className="timeline-icon">{m.icon}</span>
-            </div>
-            <div className="timeline-card">
-              <div className="timeline-head">
-                <span className="timeline-year">{m.year}</span>
-                <span className="timeline-tag">{m.tag}</span>
-              </div>
-              <h3 className="timeline-title">{m.title}</h3>
-              <p className="timeline-desc">{m.desc}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="couple-moment-feature glass">
-        <div className="moment-img-frame">
-          <img src="/images/couple.jpg" alt="Shambhavi & Aditya together" className="moment-img" />
-          <div className="moment-overlay-badge">A PROMISE OF FOREVER</div>
-        </div>
-        <p className="moment-quote">
-          &ldquo;Two souls, one sacred journey. Blessed by our families, united forever in love.&rdquo;
-        </p>
-        <div className="moment-names royal-name gold">Shambhavi &amp; Aditya</div>
-      </div>
-    </section>
-  )
-}
-
 function CeremonyCard({ svg, title, time, dateStr, dateIcs, startIcs, endIcs, file, attire, desc }) {
   return (
     <Tilt max={8}>
@@ -410,18 +339,11 @@ function CeremonyCard({ svg, title, time, dateStr, dateIcs, startIcs, endIcs, fi
             <span className="time-icon">🕐</span> {time}
           </div>
           <div className="ev-date">{dateStr}</div>
-          <p className="ev-venue">The Grand Ballroom &bull; JW Marriott, Pune</p>
+          <p className="ev-venue">Mango Leaf Lake Resort &bull; Khadakwasla, Pune</p>
           <div className="ev-attire">
             <span className="attire-tag">Dress Code:</span> {attire}
           </div>
           <div className="ev-actions">
-            <a
-              className="b b-cal"
-              href={makeIcs(`Shambhavi & Aditya: ${title}`, dateIcs, startIcs, endIcs, desc)}
-              download={file}
-            >
-              📅 Add to Calendar
-            </a>
             <a className="b b-map" href={MAP_LINK} target="_blank" rel="noopener noreferrer">
               📍 View Location
             </a>
@@ -429,115 +351,6 @@ function CeremonyCard({ svg, title, time, dateStr, dateIcs, startIcs, endIcs, fi
         </div>
       </div>
     </Tilt>
-  )
-}
-
-function GuestWishes() {
-  const [wishes, setWishes] = useState([
-    {
-      name: 'Priya & Rohan Sharma',
-      relation: "Bride's Best Friend",
-      msg: 'Wishing Shambhavi and Aditya a lifetime of endless laughter, joy, and blessings! Can’t wait to dance at the Sangeet! 🎉❤️',
-      time: 'Just now',
-    },
-    {
-      name: 'Deepak & Sunita Kulkarni',
-      relation: 'Family Elders',
-      msg: 'May God shower both of you with health, prosperity, and eternal togetherness. Blessed to be part of this celebration! 🌸🙏',
-      time: '1 hour ago',
-    },
-    {
-      name: 'Karan & The College Squad',
-      relation: "Groom's Crew",
-      msg: 'Aditya found his queen! Get ready for the wildest Baraat Pune has ever seen! Lots of love to you both! 🥂🔥',
-      time: '2 hours ago',
-    },
-  ])
-
-  const [name, setName] = useState('')
-  const [relation, setRelation] = useState('')
-  const [msg, setMsg] = useState('')
-  const [submitted, setSubmitted] = useState(false)
-
-  const handlePost = e => {
-    e.preventDefault()
-    if (!name.trim() || !msg.trim()) return
-    const newWish = {
-      name: name.trim(),
-      relation: relation.trim() || 'Well Wisher',
-      msg: msg.trim(),
-      time: 'Just now',
-    }
-    setWishes([newWish, ...wishes])
-    setName('')
-    setRelation('')
-    setMsg('')
-    setSubmitted(true)
-    window.dispatchEvent(new Event('burst'))
-    setTimeout(() => setSubmitted(false), 3500)
-  }
-
-  return (
-    <section className="sec wishes-sec">
-      <small className="section-eyebrow">BLESSINGS &amp; WISHES</small>
-      <h2 className="s foil">Words of Love</h2>
-      <p className="wishes-intro">Leave your heartfelt blessing for the bride and groom</p>
-      <Orn />
-
-      <form className="wishes-form glass" onSubmit={handlePost}>
-        <div className="form-row">
-          <div>
-            <label htmlFor="w-name">Your Full Name</label>
-            <input
-              id="w-name"
-              required
-              placeholder="e.g. Ananya Verma"
-              value={name}
-              onChange={e => setName(e.target.value)}
-            />
-          </div>
-          <div>
-            <label htmlFor="w-rel">Relation / Group</label>
-            <input
-              id="w-rel"
-              placeholder="e.g. College Friend, Cousin"
-              value={relation}
-              onChange={e => setRelation(e.target.value)}
-            />
-          </div>
-        </div>
-        <div>
-          <label htmlFor="w-msg">Your Blessing / Message</label>
-          <textarea
-            id="w-msg"
-            rows="3"
-            required
-            placeholder="Share your warm wishes, advice, or love for the couple..."
-            value={msg}
-            onChange={e => setMsg(e.target.value)}
-          />
-        </div>
-        <button className="b p submit-btn" type="submit">
-          ✨ Send Your Blessing
-        </button>
-        {submitted && <div className="wish-success">Thank you! Your blessing was posted with love ❤️</div>}
-      </form>
-
-      <div className="wishes-list">
-        {wishes.map((w, i) => (
-          <div key={i} className="wish-card">
-            <div className="wish-header">
-              <div>
-                <b className="wish-author">{w.name}</b>
-                <span className="wish-rel"> &bull; {w.relation}</span>
-              </div>
-              <span className="wish-time">{w.time}</span>
-            </div>
-            <p className="wish-body">"{w.msg}"</p>
-          </div>
-        ))}
-      </div>
-    </section>
   )
 }
 
@@ -549,29 +362,19 @@ function VenueGuide() {
       <h2 className="s foil">The Venue &amp; Stay</h2>
       <Orn />
       <div className="glass venue-info-card">
-        <h3 className="venue-title">The Grand Ballroom &bull; JW Marriott</h3>
-        <p className="venue-address">Senapati Bapat Road, Pune, Maharashtra 411053</p>
+        <h3 className="venue-title">Mango Leaf Lake Resort</h3>
+        <p className="venue-address">NDA Road, near Malai Mata Temple, Khadakwadi, Khadakwasla, Pune, Maharashtra 411023</p>
 
         <div className="venue-grid">
           <div className="venue-item">
             <span className="v-icon">✈️</span>
             <b>Airport Access</b>
-            <span>25 mins from Pune International Airport (PNQ)</span>
+            <span>~1 hr 30 mins from Pune International Airport (PNQ)</span>
           </div>
           <div className="venue-item">
             <span className="v-icon">🚆</span>
             <b>Railway Station</b>
-            <span>15 mins from Pune Junction Railway Station</span>
-          </div>
-          <div className="venue-item">
-            <span className="v-icon">🚗</span>
-            <b>Valet &amp; Parking</b>
-            <span>Complimentary 24/7 valet parking for all guests</span>
-          </div>
-          <div className="venue-item">
-            <span className="v-icon">🏨</span>
-            <b>Guest Accommodations</b>
-            <span>Deluxe suites reserved for our traveling family &amp; friends</span>
+            <span>~1 hour from Pune Junction Railway Station</span>
           </div>
         </div>
 
@@ -587,8 +390,8 @@ function VenueGuide() {
 
 export default function App() {
   const shareInvitation = () => {
-    const text = `🌸 You're cordially invited to celebrate the royal wedding of Shambhavi & Aditya! 🌸\n\n📅 11 & 12 December 2026\n📍 Pune, Maharashtra\n\nExperience our interactive wedding invitation card here:\n${window.location.href}`
-    window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, '_blank')
+    const text = `🌸 You're warmly invited to celebrate the royal wedding of Shambhavi & Aditya! 🌸\n\n📅 11 & 12 December 2026\n📍 Pune, Maharashtra\n\nExperience our interactive wedding invitation card here:\n${window.location.href}`
+    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank')
   }
 
   return (
@@ -596,70 +399,23 @@ export default function App() {
       <div dangerouslySetInnerHTML={{ __html: DEFS }} />
       <Envelope />
       <Petals />
-      <Music />
 
       <main>
         <Hero />
 
-        {/* Sacred Invocation & Family Welcome */}
+        {/* A Promise of Forever Feature */}
         <section className="sec">
-          <Tilt max={6}>
-            <div className="glass royal-card">
-              <div className="om gold" aria-hidden="true">
-                &#2384;
-              </div>
-              <div className="shloka-box">
-                <p className="sanskrit-shloka">
-                  ॥ वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।
-                  <br />
-                  निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा ॥
-                </p>
-              </div>
-              <Orn />
-              <p className="welcome-intro">
-                With the divine blessings of Almighty &amp; our respected elders,
-                <br />
-                we joyfully invite you and your family to celebrate the sacred union of
-              </p>
-
-              <div className="couple-showcase">
-                <div className="person-block">
-                  <div className="portrait-arch">
-                    <img src="/images/shambhavi.jpg" alt="Shambhavi - The Bride" className="person-img" />
-                    <div className="portrait-filigree"></div>
-                  </div>
-                  <div className="person-role">THE BRIDE</div>
-                  <div className="names royal-name foil">Shambhavi</div>
-                  <small className="family-line">Daughter of Smt. Sunita &amp; Shri Rajesh Sharma</small>
-                </div>
-
-                <div className="couple-center-divider">
-                  <svg className="sacred-kalash" viewBox="0 0 50 60" width="36" height="44"><use href="#kalash" /></svg>
-                  <div className="royal-name gold couple-amp">&amp;</div>
-                  <svg className="sacred-diya" viewBox="0 0 40 35" width="32" height="28"><use href="#diya" /></svg>
-                </div>
-
-                <div className="person-block">
-                  <div className="portrait-arch">
-                    <img src="/images/aditya.jpg" alt="Aditya - The Groom" className="person-img" />
-                    <div className="portrait-filigree"></div>
-                  </div>
-                  <div className="person-role">THE GROOM</div>
-                  <div className="names royal-name foil">Aditya</div>
-                  <small className="family-line">Son of Smt. Meenakshi &amp; Shri Sanjay Singhania</small>
-                </div>
-              </div>
-
-              <div className="arch-wrap">
-                <div className="arch" dangerouslySetInnerHTML={{ __html: ARCH }} />
-              </div>
-
+          <div className="couple-moment-feature glass">
+            <div className="moment-img-frame">
+              <img src="/images/sam-ad-1.jpg" alt="Shambhavi & Aditya together" className="moment-img" />
+              <div className="moment-overlay-badge">A PROMISE OF FOREVER</div>
             </div>
-          </Tilt>
+            <p className="moment-quote">
+              &ldquo;Two souls, one sacred journey. Blessed by our families, united forever in love.&rdquo;
+            </p>
+            <div className="moment-names royal-name gold">Shambhavi &amp; Aditya</div>
+          </div>
         </section>
-
-        {/* Our Love Story */}
-        <LoveStory />
 
         {/* Save the Date & Scratch Card */}
         <section className="sec">
@@ -668,76 +424,47 @@ export default function App() {
           <p>Scratch the 24K gold card below with your finger or cursor</p>
           <Reveal />
           <Countdown />
-          <p className="s foil journey-quote">
+          <p className="s gold journey-quote">
             "When two souls are destined to meet, the universe conspires to create magic."
           </p>
         </section>
 
-        {/* The 4 Celebrations */}
+        {/* The Wedding Celebrations */}
         <section className="sec celebrations-sec">
           <small className="section-eyebrow">WEDDING ITINERARY</small>
           <h2 className="s foil">The Celebrations</h2>
-          <p>Four enchanting gatherings of music, rituals, and unforgettable joy</p>
+          <p>Auspicious gatherings of sacred rituals, music, and unforgettable joy</p>
           <Orn />
 
           <CeremonyCard
             svg={SANGEET}
-            title="Mehendi & Sangeet Carnival"
-            time="6:00 PM Onwards"
+            title="Engagement & Tilak, Haldi, Sangeet"
+            time="Celebrations Onwards"
             dateStr="Friday · 11 December 2026"
             dateIcs="20261211"
-            startIcs="1800"
+            startIcs="1600"
             endIcs="2330"
-            file="sangeet.ics"
-            attire="Indo-Western Glitz & Starlight Sparkles"
-            desc="An evening of vibrant henna, soulful music, and high-energy dance performances by friends and family."
-          />
-
-          <CeremonyCard
-            svg={HALDI}
-            title="Haldi & Phoolon Ki Holi"
-            time="10:00 AM"
-            dateStr="Saturday · 12 December 2026"
-            dateIcs="20261212"
-            startIcs="1000"
-            endIcs="1330"
-            file="haldi.ics"
-            attire="Sunshine Yellow & Floral Ethnic"
-            desc="A joyous celebration of turmeric blessings, marigold flower showers, and traditional folk music."
+            file="celebrations_day1.ics"
+            attire="Festive Traditional & Ethnic Elegance"
+            desc="An auspicious and joyous gathering of Engagement & Tilak, Haldi blessings, and vibrant Sangeet celebrations."
           />
 
           <CeremonyCard
             svg={WEDDING}
-            title="Shubh Vivah & Varmala"
-            time="6:00 PM (Auspicious Muhurat)"
+            title="Mangalashtak, Grit Dhari & Wedding"
+            time="11:00 AM Onwards"
             dateStr="Saturday · 12 December 2026"
             dateIcs="20261212"
-            startIcs="1800"
-            endIcs="2130"
-            file="wedding.ics"
-            attire="Royal Indian Heritage & Traditional Banarasi"
-            desc="The sacred Vedic wedding rituals, Saat Phere around the holy fire, and the eternal exchange of Varmala."
-          />
-
-          <CeremonyCard
-            svg={RECEPTION}
-            title="Grand Reception & Dinner"
-            time="8:30 PM Onwards"
-            dateStr="Saturday · 12 December 2026"
-            dateIcs="20261212"
-            startIcs="2030"
-            endIcs="2359"
-            file="reception.ics"
-            attire="Black Tie, Tuxedo or Evening Glamour"
-            desc="A grand banquet dinner, champagne toast, and formal blessings as we welcome the newly married couple."
+            startIcs="1100"
+            endIcs="1600"
+            file="wedding_day2.ics"
+            attire="Royal Indian Heritage & Traditional Attire"
+            desc="The sacred rituals of Mangalashtak, Grit Dhari, Saat Phere, and the holy Vivah Sanskar."
           />
         </section>
 
         {/* Venue & Travel Guide */}
         <VenueGuide />
-
-        {/* Wishes & Blessings Wall */}
-        <GuestWishes />
 
 
       </main>
@@ -754,9 +481,7 @@ export default function App() {
         <Orn />
         <p className="footer-date">11 &bull; 12 December 2026 &bull; Pune</p>
         <p className="footer-tagline">
-          Warmly awaiting your presence with love,
-          <br />
-          The Sharma &amp; Singhania Families
+          Warmly awaiting your presence with love.
         </p>
 
         <button className="b p share-btn" onClick={shareInvitation}>
