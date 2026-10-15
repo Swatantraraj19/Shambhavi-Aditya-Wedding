@@ -663,13 +663,10 @@ body::before {
 
 @media (max-width: 600px) {
   .hero {
-    padding: 0 16px calc(46px + env(safe-area-inset-bottom, 0px));
-  }
-  .hero::after {
-    height: 38px;
+    padding: 0 16px calc(24px + env(safe-area-inset-bottom, 0px));
   }
   .hero-content {
-    margin-bottom: 6px;
+    margin-bottom: 2px;
   }
   .hero-name-line {
     font-size: clamp(2.7rem, 11.5vw, 3.4rem);
@@ -705,14 +702,7 @@ body::before {
 }
 
 .hero::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
-  height: 90px;
-  background: linear-gradient(180deg, transparent, var(--ivory));
-  pointer-events: none;
+  display: none;
 }
 
 /* Letter reveal animation */

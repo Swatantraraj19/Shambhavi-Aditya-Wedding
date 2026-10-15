@@ -200,19 +200,19 @@ export default function Hero() {
       const isPortrait = w / h < 1
 
       if (isPortrait) {
-        // Mobile portrait: rings are refined & delicate (never overpowering), leaving majestic room for couple's names
-        by = 1.42
+        // Mobile portrait: rings centered harmoniously above couple's names with no dead void
+        by = 1.02
         bs = Math.min(w / 400, 1) * 0.38
         cam.position.z = 8.2
       } else if (h < 640) {
         // Short landscape / mobile landscape
-        by = 1.05
-        bs = 0.42
+        by = 0.95
+        bs = 0.40
         cam.position.z = 7.8
       } else {
-        // Desktop / Tablet landscape: elegant jewel scale floating in top half
-        by = 1.15
-        bs = Math.min(h / 900, 1) * 0.52
+        // Desktop / Tablet landscape: elegant jewel scale floating gracefully above the names
+        by = 1.00
+        bs = Math.min(h / 900, 1) * 0.50
         cam.position.z = 8.0
       }
       cam.updateProjectionMatrix()
