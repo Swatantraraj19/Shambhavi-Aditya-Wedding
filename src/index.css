@@ -563,8 +563,13 @@ body::before {
 .hero-content {
   position: relative;
   z-index: 10;
-  max-width: 620px;
+  max-width: 680px;
   width: 100%;
+  height: 64vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
   text-align: center;
   pointer-events: none;
 }
@@ -612,6 +617,11 @@ body::before {
   justify-content: center;
   align-items: baseline;
   gap: 0.18em;
+}
+
+.hero-aditya-wrap {
+  display: inline-flex;
+  align-items: baseline;
 }
 
 .royal-letter {
@@ -663,37 +673,54 @@ body::before {
 
 @media (max-width: 600px) {
   .hero {
-    padding: 0 16px calc(24px + env(safe-area-inset-bottom, 0px));
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 0 16px calc(16px + env(safe-area-inset-bottom, 0px));
   }
+
   .hero-content {
-    margin-bottom: 2px;
+    height: 70svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 0;
   }
+
   .hero-name-line {
-    font-size: clamp(2.7rem, 11.5vw, 3.4rem);
+    font-size: clamp(2.6rem, 11vw, 3.3rem);
     line-height: 1.05;
   }
+
   .shloka-mini {
-    font-size: 1.05rem;
-    margin-bottom: 2px;
+    font-size: 1.02rem;
+    margin: 0;
   }
+
   .hero-subtitle {
-    font-size: 1.12rem;
-    margin: 0.12em 0;
+    font-size: 1.1rem;
+    margin: 0;
   }
+
   .hero .dt2 {
     font-size: 1.35rem;
     letter-spacing: 0.18em;
-    margin: 8px 0 2px;
+    margin: 0;
   }
+
   .hero-place {
     font-size: 0.8rem;
     letter-spacing: 0.15em;
-    margin: 0.12em 0 6px;
+    margin: 0;
   }
+
   .hero-drag-hint {
     font-size: 0.7rem;
     letter-spacing: 0.15em;
-    margin-top: 4px;
+    margin: 0;
   }
 }
 

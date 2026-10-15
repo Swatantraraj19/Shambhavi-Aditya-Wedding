@@ -200,19 +200,19 @@ export default function Hero() {
       const isPortrait = w / h < 1
 
       if (isPortrait) {
-        // Mobile portrait: rings centered harmoniously above couple's names with no dead void
-        by = 1.02
-        bs = Math.min(w / 400, 1) * 0.38
+        // Mobile portrait: rings act as an exquisite royal emblem at the top (~100px)
+        by = 1.72
+        bs = Math.min(w / 400, 1) * 0.22
         cam.position.z = 8.2
       } else if (h < 640) {
         // Short landscape / mobile landscape
-        by = 0.95
-        bs = 0.40
+        by = 1.15
+        bs = 0.26
         cam.position.z = 7.8
       } else {
-        // Desktop / Tablet landscape: elegant jewel scale floating gracefully above the names
-        by = 1.00
-        bs = Math.min(h / 900, 1) * 0.50
+        // Desktop / Tablet landscape: delicate jewel crest above the names
+        by = 1.35
+        bs = Math.min(h / 900, 1) * 0.32
         cam.position.z = 8.0
       }
       cam.updateProjectionMatrix()
@@ -301,7 +301,7 @@ export default function Hero() {
           <span className="hero-name-line">{L('Shambhavi', 0)}</span>
           <span className="hero-name-line hero-line-second">
             <span className="ampersand">&amp;</span>
-            {L('Aditya', 10)}
+            <span className="hero-aditya-wrap">{L('Aditya', 10)}</span>
           </span>
         </h1>
         <div className="dt2">
