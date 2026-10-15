@@ -210,10 +210,10 @@ export default function Hero() {
         bs = 0.26
         cam.position.z = 7.8
       } else {
-        // Desktop / Tablet landscape: delicate jewel crest above the names
-        by = 1.35
-        bs = Math.min(h / 900, 1) * 0.32
-        cam.position.z = 8.0
+        // Desktop / Tablet landscape: lifted high enough so it NEVER overlaps with text
+        by = 1.68
+        bs = Math.min(h / 900, 1) * 0.26
+        cam.position.z = 8.2
       }
       cam.updateProjectionMatrix()
     }
