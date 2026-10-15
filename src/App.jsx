@@ -446,7 +446,7 @@ export default function App() {
 
           <CeremonyCard
             svg={WEDDING}
-            title="Mangalashtak, Grit Dhari & Wedding"
+            title="Mangalashtak, Gritdhari & Wedding"
             time="11:00 AM Onwards"
             dateStr="Saturday · 12 December 2026"
             dateIcs="20261212"
